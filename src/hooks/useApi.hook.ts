@@ -23,9 +23,7 @@ const useApi = (): UseApiReturnType => {
   const { apiUrl } = useApiContext();
   const api = new Api(apiUrl);
 
-  const [news, setNews] = useState<Response<News[]>>(
-    {} as Response<News[]>,
-  );
+  const [news, setNews] = useState<Response<News[]>>({} as Response<News[]>);
   const [show, setShow] = useState<Response<News>>({} as Response<News>);
 
   const getNews = async () => {
