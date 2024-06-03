@@ -1,7 +1,7 @@
 'use client';
 
 import { useApiContext } from '@/context/ApiContext';
-import { News, NewsHeadline, NewsSecondary } from '@/domain';
+import { News } from '@/domain';
 import Api from '@/services/Api.service';
 import { useState } from 'react';
 
@@ -12,12 +12,10 @@ type Response<T> = {
 };
 
 interface UseApiReturnType {
-  getHeadline: () => Promise<void>;
-  getSecondary: () => Promise<void>;
+  getNews: () => Promise<void>;
   getShow: (id: string) => Promise<void>;
   test: () => Promise<boolean>;
-  headline: Response<NewsHeadline[]>;
-  secondary: Response<NewsSecondary[]>;
+  news: Response<News[]>;
   show: Response<News>;
 }
 
@@ -25,18 +23,15 @@ const useApi = (): UseApiReturnType => {
   const { apiUrl } = useApiContext();
   const api = new Api(apiUrl);
 
-  const [headline, setHeadline] = useState<Response<NewsHeadline[]>>(
-    {} as Response<NewsHeadline[]>,
-  );
-  const [secondary, setSecondary] = useState<Response<NewsSecondary[]>>(
-    {} as Response<NewsSecondary[]>,
+  const [news, setNews] = useState<Response<News[]>>(
+    {} as Response<News[]>,
   );
   const [show, setShow] = useState<Response<News>>({} as Response<News>);
 
-  const getHeadline = async () => {
-    setHeadline({ loading: true, error: null, data: {} as NewsHeadline[] });
+  const getNews = async () => {
+    setHeadline({ loading: true, error: null, data: {} as News[] });
     try {
-      const data = await api.headline();
+      const data = await api.news();
 
       setHeadline((prevState) => ({ ...prevState, data: data }));
     } catch (err) {
@@ -46,22 +41,6 @@ const useApi = (): UseApiReturnType => {
       }));
     } finally {
       setHeadline((prevState) => ({ ...prevState, loading: false }));
-    }
-  };
-
-  const getSecondary = async () => {
-    setSecondary({ loading: true, error: null, data: {} as NewsSecondary[] });
-    try {
-      const data = await api.secondary();
-
-      setSecondary((prevState) => ({ ...prevState, data: data }));
-    } catch (err) {
-      setSecondary((prevState) => ({
-        ...prevState,
-        error: (err as Error).message,
-      }));
-    } finally {
-      setSecondary((prevState) => ({ ...prevState, loading: false }));
     }
   };
 
@@ -88,12 +67,10 @@ const useApi = (): UseApiReturnType => {
   };
 
   return {
-    getHeadline,
-    getSecondary,
+    getNews,
     getShow,
     test,
-    headline,
-    secondary,
+    news,
     show,
   };
 };
