@@ -1,6 +1,6 @@
 'use client';
-import { Header } from '@/components';
-import { Grid, GridItem } from '@chakra-ui/react';
+import { Advertising, Header } from '@/components';
+import { Container, Grid, GridItem } from '@chakra-ui/react';
 
 export default function Home() {
   return (
@@ -8,11 +8,15 @@ export default function Home() {
       templateAreas={`"header header" "main main"`}
       gridTemplateRows={'75px 1fr'}
       minH={'100vh'}
+      gap={10}
     >
       <Header title={'MP-NEWS'} />
 
-      <GridItem pl="2" bg="orange.300" area={'main'} as="main">
-        Main
+      <GridItem p="0" bg="orange.300" area={'main'} as="main">
+        <Container maxW={'1700px'}>
+          <Advertising />
+          Main
+        </Container>
       </GridItem>
     </Grid>
   );
