@@ -7,7 +7,7 @@ export type HeaderProps = {
 
 export const Header = ({ title }: HeaderProps) => (
   <GridItem
-    pl="2"
+    p="0"
     bg="#C4170C"
     area={'header'}
     as="header"
