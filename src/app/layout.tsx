@@ -14,13 +14,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="pt-br">
       <body className={inter.className}>
-        <ChakraProvider>
-          {children}
-        </ChakraProvider>
+        <ChakraProvider>{children}</ChakraProvider>
       </body>
     </html>
   );
