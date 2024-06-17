@@ -16,6 +16,7 @@ export default function Home() {
         <Container maxW={'1700px'}>
           <Advertising />
           <Headline />
+          <Advertising />
           Main
         </Container>
       </GridItem>
