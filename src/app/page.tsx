@@ -1,5 +1,5 @@
 'use client';
-import { Advertising, Header } from '@/components';
+import { Advertising, Header, Headline } from '@/components';
 import { Container, Grid, GridItem } from '@chakra-ui/react';
 
 export default function Home() {
@@ -15,6 +15,7 @@ export default function Home() {
       <GridItem p="0" bg="orange.300" area={'main'} as="main">
         <Container maxW={'1700px'}>
           <Advertising />
+          <Headline />
           Main
         </Container>
       </GridItem>
