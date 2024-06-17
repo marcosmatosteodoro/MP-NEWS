@@ -27,7 +27,7 @@ export const HeadlineNews = ({ title, subTitle, img, area, text, main }: Headlin
           backgroundSize: '105%',
         }}
       >
-        <Link href="./" h={'full'} textDecoration={'none !important'}>
+        <Link href="noticia/:categoria:/:id" h={'full'} textDecoration={'none !important'}>
           <Flex
             h={'full'}
             w={'full'}
